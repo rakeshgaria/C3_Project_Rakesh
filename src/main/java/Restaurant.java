@@ -57,16 +57,21 @@ public class Restaurant {
     }
 
     public void displayDetails() {
-        System.out.println("Restaurant:" + name + "\n"
-                + "Location:" + location + "\n"
-                + "Opening time:" + openingTime + "\n"
-                + "Closing time:" + closingTime + "\n"
-                + "Menu:" + "\n" + getMenu());
-
+        System.out.println("Restaurant:" + name + "\n" + "Location:" + location + "\n" + "Opening time:" + openingTime + "\n" + "Closing time:" + closingTime + "\n" + "Menu:" + "\n" + getMenu());
     }
 
     public String getName() {
         return name;
     }
 
+    public int getTotalOrderValue(List<String> orderItemNames) {
+        int totalOrderValue = 0;
+
+        for (String itemName : orderItemNames) {
+            Item orderItem = findItemByName(itemName);
+            totalOrderValue += orderItem.getPrice();
+        }
+
+        return totalOrderValue;
+    }
 }
